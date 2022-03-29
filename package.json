@@ -1,0 +1,48 @@
+{
+  "name": "wallets-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
+    "start": "NODE_ENV=production babel-node ./src/index.js",
+    "db-migrate": "npx sequelize db:migrate",
+    "db-undo-migration": "npx sequelize db:migrate:undo:all",
+    "db-seed-test": "NODE_ENV=testing npx sequelize-cli db:seed:undo:all && NODE_ENV=testing sequelize db:seed:all",
+    "db-seed-dev": "npx sequelize-cli db:seed:undo:all && npx sequelize db:seed:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.6",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/joi-date": "^2.0.1",
+    "axios": "^0.26.1",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "log4js": "^6.4.1",
+    "pg": "^8.5.2",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^6.2.0",
+    "stripe": "^8.203.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "nyc": "^14.1.1"
+  }
+}

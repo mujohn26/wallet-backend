@@ -11,6 +11,16 @@ class EtherscanService{
     }
   }
 
+  static async createBlock(data) {
+    try {
+      const response = await db.Blocks.create(data)
+      return response
+    }
+    catch (error) {
+      return error;
+    }
+  }
+
   static async findOneWallet(walletAddress) {
     const data = await db.Wallets.findOne({ where: { account: walletAddress } });
     if (data) {

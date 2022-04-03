@@ -24,7 +24,7 @@ class EtherscanService{
   static async findOneWallet(walletAddress) {
     const data = await db.Wallets.findOne({ where: { account: walletAddress } });
     if (data) {
-      return data.dataValues.account;
+      return data.dataValues
     }
     return 'false';
   }

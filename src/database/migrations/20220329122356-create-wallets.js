@@ -5,11 +5,13 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique:true
       },
       account: {
-        type: Sequelize.STRING
+        primaryKey: true,
+        type: Sequelize.STRING,
+        unique: true,
       },
       balance: {
         type: Sequelize.STRING

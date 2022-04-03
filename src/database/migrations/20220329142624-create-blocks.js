@@ -6,10 +6,26 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        unique:true,
         type: Sequelize.INTEGER
       },
       account: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        references: {
+          model: 'Wallets', // name of Target model
+          key: 'account', // key in Target model that we're referencing
+        },
+        onDelete: "CASCADE",
+        onUpdate:'CASCADE'
+      },
+      WalletId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Wallets', // name of Target model
+          key: 'id', // key in Target model that we're referencing
+        },
+        onDelete: "CASCADE",
+        onUpdate: 'CASCADE'
       },
       blockNumber: {
         type: Sequelize.STRING

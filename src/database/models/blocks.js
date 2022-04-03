@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Blocks.belongsTo(models.Wallets)
       // define association here
     }
   }
@@ -18,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     blockNumber: DataTypes.STRING,
     timestamp: DataTypes.STRING,
     blockhash: DataTypes.STRING,
+    WalletId: DataTypes.INTEGER,
     from: DataTypes.STRING,
     to: DataTypes.STRING,
     value: DataTypes.STRING,

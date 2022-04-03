@@ -15,9 +15,11 @@ class EtherscanWalletController{
     account: e.account,
     balance: e.balance
    }
-    const wallet = await EtherscanService.findOneWallet(e.account)
-    if (wallet == e.account) {
-      const updateResponse = await EtherscanService.updateWallet(data, wallet)
+    const walletData = await EtherscanService.findOneWallet(e.account)
+    console.log('=-=-=-=-==', walletData)
+
+    if (walletData.account == e.account) {
+      const updateResponse = await EtherscanService.updateWallet(data, walletData.account)
       const blockData = await axios.get(`https://api.etherscan.io/api?module=account&action=txlist&address=${e.account}&tag=latest&apikey=H2CTXGJCY5KBHFUFY2E873MI7H2WYKKJWB`)
       blockData.data.result.forEach(async (block) => {
         const blockData = {
@@ -25,6 +27,7 @@ class EtherscanWalletController{
           blockNumber: block.blockNumber,
           timestamp: block.timestamp,
           blockhash: block.blockHash,
+          walletId: walletData.id,
           from: block.from,
           to: block.to,
           value: block.value,
@@ -46,6 +49,7 @@ class EtherscanWalletController{
           blockNumber: block.blockNumber,
           timestamp: block.timestamp,
           blockHash: block.blockHash,
+          walletId: response.dataValues.id,
           from: block.from,
           to: block.to,
           value: block.value,

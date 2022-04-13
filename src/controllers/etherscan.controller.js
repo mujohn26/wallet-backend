@@ -20,8 +20,9 @@ class EtherscanWalletController{
 
     for (let index = 0; index < addresses.length; index++){
     const data = await axios.get(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${addresses[index]}&tag=latest&apikey=H2CTXGJCY5KBHFUFY2E873MI7H2WYKKJWB`)
-      const result = data.data.result;
-  if (result != null) {
+    console.log()
+    const result = data.data.result;
+  if (result != null && result.length!=0) {
   let count = 0;
   result.forEach(async(e) => {
    const data = {

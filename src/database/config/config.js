@@ -15,5 +15,11 @@ module.exports.testing = {
 module.exports.production = {
   url: process.env.DATABASE_URL,
   dialect: 'postgresql',
-  logging:false
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true, 
+      rejectUnauthorized: false
+    }
+  },
 }
